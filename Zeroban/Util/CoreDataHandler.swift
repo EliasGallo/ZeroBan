@@ -47,7 +47,7 @@ class CoreDataHandler: NSObject {
         return saveContext()
     }
     
-    class func fetchReportRowObject() -> [ReportRow]? {
+    class func fetchAllReportRowObjects() -> [ReportRow]? {
         do {
             let objects: [ReportRow]? = try getAppContext().fetch(ReportRow.fetchRequest())
             return objects
@@ -57,38 +57,20 @@ class CoreDataHandler: NSObject {
     }
     
     class func getLookupRows() -> [(rfs: Date, leadTime: Int)]? {
-        // TODO: do calculations
         // PSAck1 = inprogress1 + done1
         // rfs lookup = date PSAack1 = done2
-        if let reportRowObjects = fetchReportRowObject(), reportRowObjects.count > 1 {
+        if let reportRowObjects = fetchAllReportRowObjects(), reportRowObjects.count > 1 {
             var objects: [(rfs: Date, leadTime: Int)] = []
             (1..<reportRowObjects.count).forEach({ i in
                 let object1 = reportRowObjects[i]
                 (0..<i).forEach({ k in
                     let object2 = reportRowObjects[k]
-                    if(object1 === object2) {
-                        print("same obj")
-                    }
                     let psack1 = Int(object2.in_progress + object2.done)
                     if (psack1 == Int(object1.done)) {
                         objects.append((rfs: object2.date! as Date, leadTime: getDayDiff(startDate: object1.date! as Date, endDate: object2.date! as Date)))
                     }
                 })
             })
-            
-            /*for object1 in reportRowObjects {
-                for object2 in reportRowObjects {
-                    if(object1 === object2) {
-                        print("same obj")
-                        break
-                    }
-                    let psack1 = Int(object1.in_progress + object1.done)
-                    if (psack1 == Int(object2.done)) {
-                        objects.append((rfs: object1.date! as Date, leadTime: 2))
-                        break
-                    }
-                }
-            }*/
             return objects
         }
         return nil

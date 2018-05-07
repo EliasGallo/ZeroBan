@@ -36,7 +36,7 @@ class ZTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        data = CoreDataHandler.fetchReportRowObject()
+        data = CoreDataHandler.fetchAllReportRowObjects()
     }
     
     @objc func dismissKeyboard() {
@@ -70,7 +70,7 @@ class ZTableViewController: UITableViewController {
     
     @IBAction func handlePlusClick() {
         if CoreDataHandler.saveReportRowObject(date: Date.init(), todo: 0, inProgress: 0, done: 0) {
-            data = CoreDataHandler.fetchReportRowObject()
+            data = CoreDataHandler.fetchAllReportRowObjects()
             tableView.reloadData()
         } else {
             print("couldn't save")
