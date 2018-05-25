@@ -11,9 +11,9 @@ import UIKit
 class ZTableViewCell: UITableViewCell {
     
     let stackView: UIStackView = ZStackView()
-    var showTotal = false
     var fieldsDisabled = false
     var entity: ReportRow?
+    var extraSections: [Int] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,13 +57,13 @@ class ZTableViewCell: UITableViewCell {
                 }
             })
             
-            if(showTotal) {
+            extraSections.forEach({ value in
                 // set last one as total
                 let totalField = ZNumberField()
-                totalField.text = String(entity!.getTotal())
+                totalField.text = String(value)
                 totalField.setDisabledField()
                 stackView.addArrangedSubview(totalField)
-            }
+            })
         }
     }
     

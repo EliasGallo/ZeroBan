@@ -78,8 +78,6 @@ class CoreDataHandler: NSObject {
     }
     
     private class func getDayDiff(startDate: Date, endDate: Date) -> Int {
-        print("startDate", startDate)
-        print("endDate", endDate)
         return Calendar.current.dateComponents([.day], from: endDate, to: startDate).day!
     }
     
@@ -104,4 +102,9 @@ class CoreDataHandler: NSObject {
             return true
         }
     }
+    
+//    class func getWipRows(entity, ) -> [Int] {
+//        let objects:[ReportRow] = CoreDataHandler.fetchAllReportRowObjects()!
+//        return objects.map({ Int($0.in_progress) })
+//    }
 }

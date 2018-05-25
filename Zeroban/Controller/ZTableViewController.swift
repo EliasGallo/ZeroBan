@@ -12,6 +12,7 @@ class ZTableViewController: UITableViewController {
     
     var data: [ReportRow]?
     var editMode: Bool = false
+    let extraSections = ["Total", "WIP"]
 
     @IBOutlet weak var plusButton: UIButton!
     
@@ -61,8 +62,8 @@ class ZTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "zcell", for: indexPath) as! ZTableViewCell
         let reportRowObject = data![indexPath.row]
         cell.entity = reportRowObject
-        cell.showTotal = true
         cell.fieldsDisabled = editMode
+        cell.extraSections = [reportRowObject.getTotal(), Int(reportRowObject.in_progress)]
         return cell
     }
     
@@ -93,9 +94,11 @@ class ZTableViewController: UITableViewController {
                 label.text = String.init(describing: $0.key)
                 headerStackView.addArrangedSubview(label)
             })
-            let label = ZTableViewController.createLabel()
-            label.text = "Total"
-            headerStackView.addArrangedSubview(label)
+            extraSections.forEach({ section in
+                let label = ZTableViewController.createLabel()
+                label.text = section
+                headerStackView.addArrangedSubview(label)
+            })
         }
         return headerStackView
     }
