@@ -11,6 +11,7 @@ import UIKit
 class ZTableViewController: UITableViewController {
     
     var data: [ReportRow]?
+    var editMode: Bool = false
 
     @IBOutlet weak var plusButton: UIButton!
     
@@ -25,7 +26,7 @@ class ZTableViewController: UITableViewController {
         plusButton.titleLabel?.text = "+"
 
         //self.navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Lookup", style: .done, target: self, action: #selector(handleBarClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(handleBarClick))
         
         // Tap outside keyboard dissmiss
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
@@ -61,11 +62,16 @@ class ZTableViewController: UITableViewController {
         let reportRowObject = data![indexPath.row]
         cell.entity = reportRowObject
         cell.showTotal = true
+        cell.fieldsDisabled = editMode
         return cell
     }
     
     @objc func handleBarClick() {
-        self.navigationController?.pushViewController(ZLookupTableViewController(), animated: true)
+        // set edit mode
+        editMode = !editMode
+        tableView.reloadData()
+        navigationItem.rightBarButtonItem?.title = editMode ? "Done" : "Edit"
+        print("editMode", editMode)
     }
     
     @IBAction func handlePlusClick() {

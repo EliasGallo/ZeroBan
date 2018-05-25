@@ -24,21 +24,21 @@ class ZTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(stackView)
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         stackView.frame = self.contentView.frame
         self.backgroundColor = UIColor.clear
         self.selectionStyle = .none
         
-        if stackView.arrangedSubviews.count <= 1, let data = entity?.getEntityValues() {
+        if let data = entity?.getEntityValues() {
             let subViews = stackView.arrangedSubviews
             subViews.forEach({ $0.removeFromSuperview() })
             data.forEach({
                 if let dateValue = $0.value.get as? Date {
                     let dateField:ZDateField = ZDateField()
                     dateField.setValue(value: dateValue)
-                    if self.fieldsDisabled {
+                    if !self.fieldsDisabled {
                         dateField.setDisabledField()
                     } else {
                         dateField.changeValue = fieldChanged(set: $0.value.set)
@@ -48,7 +48,7 @@ class ZTableViewCell: UITableViewCell {
                 } else if let intValue = $0.value.get as? Int {
                     let numberField = ZNumberField()
                     numberField.text = String(intValue)
-                    if fieldsDisabled {
+                    if !self.fieldsDisabled {
                         numberField.setDisabledField()
                     } else {
                         numberField.changeValue = fieldChanged(set: $0.value.set)
@@ -56,7 +56,7 @@ class ZTableViewCell: UITableViewCell {
                     stackView.addArrangedSubview(numberField)
                 }
             })
-
+            
             if(showTotal) {
                 // set last one as total
                 let totalField = ZNumberField()
