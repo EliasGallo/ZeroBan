@@ -43,6 +43,7 @@ class CoreDataHandler: NSObject {
         managedObject.setValue(todo, forKey: "todo")
         managedObject.setValue(inProgress, forKey: "in_progress")
         managedObject.setValue(done, forKey: "done")
+        managedObject.setValue(Date.init(), forKey: "createdAt")
 
         return saveContext()
     }
