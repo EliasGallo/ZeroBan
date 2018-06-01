@@ -11,6 +11,7 @@
 		4F4FB2D62074EC2B00AFF1BC /* ZLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FB2D52074EC2B00AFF1BC /* ZLookupTableViewCell.swift */; };
 		4F5399F02065227800A3C7A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5399EF2065227800A3C7A7 /* Colors.swift */; };
 		4F5399F62065D06400A3C7A7 /* ZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5399F52065D06400A3C7A7 /* ZStackView.swift */; };
+		4F6D4EF720B8637700ED0159 /* BoardCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D4EF620B8637700ED0159 /* BoardCalculations.swift */; };
 		4F87F1FD205C010C003E70E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87F1FC205C010C003E70E0 /* AppDelegate.swift */; };
 		4F87F1FF205C010C003E70E0 /* ZTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87F1FE205C010C003E70E0 /* ZTableViewController.swift */; };
 		4F87F202205C010C003E70E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F87F200205C010C003E70E0 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		4F4FB2D52074EC2B00AFF1BC /* ZLookupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZLookupTableViewCell.swift; sourceTree = "<group>"; };
 		4F5399EF2065227800A3C7A7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4F5399F52065D06400A3C7A7 /* ZStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackView.swift; sourceTree = "<group>"; };
+		4F6D4EF620B8637700ED0159 /* BoardCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCalculations.swift; sourceTree = "<group>"; };
 		4F87F1F9205C010C003E70E0 /* Zeroban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeroban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F87F1FC205C010C003E70E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F87F1FE205C010C003E70E0 /* ZTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTableViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				4F5399EF2065227800A3C7A7 /* Colors.swift */,
 				4FE1F49E206BF98B000A9F87 /* CoreDataHandler.swift */,
+				4F6D4EF620B8637700ED0159 /* BoardCalculations.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				4F87F1FF205C010C003E70E0 /* ZTableViewController.swift in Sources */,
 				4F87F228205C11C8003E70E0 /* ZTableViewCell.swift in Sources */,
 				4FCBD0EE2065D8850047FAA0 /* ZLookupTableViewController.swift in Sources */,
+				4F6D4EF720B8637700ED0159 /* BoardCalculations.swift in Sources */,
 				4F5399F02065227800A3C7A7 /* Colors.swift in Sources */,
 				4F4FB2D62074EC2B00AFF1BC /* ZLookupTableViewCell.swift in Sources */,
 				4F5399F62065D06400A3C7A7 /* ZStackView.swift in Sources */,

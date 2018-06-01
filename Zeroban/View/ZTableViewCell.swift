@@ -79,7 +79,7 @@ class ZTableViewCell: UITableViewCell {
             set(newValue)
             _ = CoreDataHandler.saveContext()
             // assuming total is the last subview
-            (self.stackView.arrangedSubviews.last as! ZNumberField).text = String(self.entity!.getTotal())
+            (self.stackView.arrangedSubviews.last as! ZNumberField).text = String(describing: self.extraSections.last)
         }
     }
 }

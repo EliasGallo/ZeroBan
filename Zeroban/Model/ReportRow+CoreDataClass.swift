@@ -55,8 +55,4 @@ public class ReportRow: NSManagedObject {
             }
         )
     }
-    
-    func getTotal() -> Int{
-        return Int(self.todo + self.in_progress + self.done)
-    }
 }

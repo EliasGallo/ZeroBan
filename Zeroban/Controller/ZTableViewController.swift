@@ -12,8 +12,12 @@ class ZTableViewController: UITableViewController {
     
     var data: [ReportRow]?
     var editMode: Bool = false
-    let extraSections = ["Total", "WIP"]
-
+    let extraSections = [
+        (title: "Total", value: BoardCalculations.getTotal()),
+        (title: "WIP", value: BoardCalculations.getWip()),
+        (title: "PSAck", value: BoardCalculations.getPSAck())
+    ]
+    
     @IBOutlet weak var plusButton: UIButton!
     
     override func viewDidLoad() {
@@ -63,7 +67,7 @@ class ZTableViewController: UITableViewController {
         let reportRowObject = data![indexPath.row]
         cell.entity = reportRowObject
         cell.fieldsDisabled = editMode
-        cell.extraSections = [reportRowObject.getTotal(), Int(reportRowObject.in_progress)]
+        cell.extraSections = extraSections.map({ $0.value(reportRowObject) })
         return cell
     }
     
@@ -94,7 +98,8 @@ class ZTableViewController: UITableViewController {
                 label.text = String.init(describing: $0.key)
                 headerStackView.addArrangedSubview(label)
             })
-            extraSections.forEach({ section in
+            let sectionTitles = extraSections.map({ $0.title })
+            sectionTitles.forEach({ section in
                 let label = ZTableViewController.createLabel()
                 label.text = section
                 headerStackView.addArrangedSubview(label)
