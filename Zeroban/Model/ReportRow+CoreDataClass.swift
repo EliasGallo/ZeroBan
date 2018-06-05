@@ -11,6 +11,8 @@ import Foundation
 import CoreData
 
 public class ReportRow: NSManagedObject {
+    var extraSections: Array<Int> = []
+
     func getEntityValues() -> [(key: String, value: (get: Any, set:(Any) -> ()))] {
         return [
             ("Date", getSetDate()),

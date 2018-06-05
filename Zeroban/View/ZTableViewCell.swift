@@ -13,7 +13,6 @@ class ZTableViewCell: UITableViewCell {
     let stackView: UIStackView = ZStackView()
     var fieldsDisabled = false
     var entity: ReportRow?
-    var extraSections: [Int] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,7 +56,7 @@ class ZTableViewCell: UITableViewCell {
                 }
             })
             
-            extraSections.forEach({ value in
+            entity?.extraSections.forEach({ value in
                 // set last one as total
                 let totalField = ZNumberField()
                 totalField.text = String(value)
@@ -79,7 +78,7 @@ class ZTableViewCell: UITableViewCell {
             set(newValue)
             _ = CoreDataHandler.saveContext()
             // assuming total is the last subview
-            (self.stackView.arrangedSubviews.last as! ZNumberField).text = String(describing: self.extraSections.last)
+            (self.stackView.arrangedSubviews.last as! ZNumberField).text = String(describing: self.entity?.extraSections.last)
         }
     }
 }

@@ -57,6 +57,27 @@ class CoreDataHandler: NSObject {
         }
     }
     
+    class func fetchData() -> (sections: [String], values: [ReportRow])? {
+        if let objects: [ReportRow] = fetchAllReportRowObjects(), !objects.isEmpty {
+            let keys: [String] = objects[0].getEntityValues().map({ String.init(describing: $0.key) }) + ["Total", "WIP", "PSAck", "Thoughput"]
+            
+            // add extra values
+            for i in 0 ..< objects.count {
+                let o = objects[i]
+                o.extraSections = [
+                    BoardCalculations.getTotal(entity: o),
+                    BoardCalculations.getWip(entity: o),
+                    BoardCalculations.getPSAck(entity: o),
+                    i != 0
+                        ? BoardCalculations.getThroughput(entity: o, entity2: objects[i - 1])
+                        : 0
+                ]
+            }
+            return (sections: keys, values: objects)
+        }
+        return nil
+    }
+    
     class func getLookupRows() -> [(rfs: Date, leadTime: Int)]? {
         // PSAck1 = inprogress1 + done1
         // rfs lookup = date PSAack1 = done2

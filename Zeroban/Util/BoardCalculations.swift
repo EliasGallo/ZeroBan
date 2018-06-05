@@ -10,22 +10,20 @@ import Foundation
 
 struct BoardCalculations {
 
-    static func getWip() -> (_ entity: ReportRow) -> Int {
-        return { entity in
-            return Int(entity.in_progress)
-        }
+    static func getWip(entity: ReportRow) -> Int {
+        return Int(entity.in_progress)
     }
 
-    static func getPSAck() -> (_ entity: ReportRow) -> Int {
-        return { entity in
-            return Int(entity.in_progress + entity.done)
-        }
+    static func getPSAck(entity: ReportRow) -> Int {
+        return Int(entity.in_progress + entity.done)
     }
     
-    static func getTotal() -> (_ entity: ReportRow) -> Int {
-        return { entity in
-            return Int(entity.todo + entity.in_progress + entity.done)
-        }
+    static func getTotal(entity: ReportRow) -> Int {
+        return Int(entity.todo + entity.in_progress + entity.done)
+    }
+    
+    static func getThroughput(entity: ReportRow, entity2: ReportRow) -> Int {
+        return Int(entity.done - entity2.done)
     }
 }
 

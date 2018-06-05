@@ -10,13 +10,8 @@ import UIKit
 
 class ZTableViewController: UITableViewController {
     
-    var data: [ReportRow]?
+    var data: (sections: [String], values: [ReportRow])?
     var editMode: Bool = false
-    let extraSections = [
-        (title: "Total", value: BoardCalculations.getTotal()),
-        (title: "WIP", value: BoardCalculations.getWip()),
-        (title: "PSAck", value: BoardCalculations.getPSAck())
-    ]
     
     @IBOutlet weak var plusButton: UIButton!
     
@@ -42,7 +37,7 @@ class ZTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        data = CoreDataHandler.fetchAllReportRowObjects()
+        data = CoreDataHandler.fetchData()
     }
     
     @objc func dismissKeyboard() {
@@ -59,15 +54,14 @@ class ZTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data?.count ?? 0
+        return data?.values.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "zcell", for: indexPath) as! ZTableViewCell
-        let reportRowObject = data![indexPath.row]
+        let reportRowObject = data?.values[indexPath.row]
         cell.entity = reportRowObject
         cell.fieldsDisabled = editMode
-        cell.extraSections = extraSections.map({ $0.value(reportRowObject) })
         return cell
     }
     
@@ -80,10 +74,10 @@ class ZTableViewController: UITableViewController {
     }
     
     @IBAction func handlePlusClick() {
-        let lastDate = self.data?.last?.date
+        let lastDate = self.data?.values.last?.date
         let newDate = lastDate != nil ? Calendar.current.date(byAdding: .day, value: 1, to: lastDate! as Date) : Date.init()
         if CoreDataHandler.saveReportRowObject(date: newDate!, todo: 0, inProgress: 0, done: 0) {
-            data = CoreDataHandler.fetchAllReportRowObjects()
+            data = CoreDataHandler.fetchData()
             tableView.reloadData()
         } else {
             print("couldn't save")
@@ -92,16 +86,10 @@ class ZTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerStackView = ZStackView()
-        if data != nil, data!.count > 0, let keys = data?[0].getEntityValues() {
+        if let keys = data?.sections {
             keys.forEach({
                 let label = ZTableViewController.createLabel()
-                label.text = String.init(describing: $0.key)
-                headerStackView.addArrangedSubview(label)
-            })
-            let sectionTitles = extraSections.map({ $0.title })
-            sectionTitles.forEach({ section in
-                let label = ZTableViewController.createLabel()
-                label.text = section
+                label.text = String.init(describing: $0)
                 headerStackView.addArrangedSubview(label)
             })
         }
