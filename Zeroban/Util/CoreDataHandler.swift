@@ -77,27 +77,7 @@ class CoreDataHandler: NSObject {
         }
         return nil
     }
-    
-    class func getLookupRows() -> [(rfs: Date, leadTime: Int)]? {
-        // PSAck1 = inprogress1 + done1
-        // rfs lookup = date PSAack1 = done2
-        if let reportRowObjects = fetchAllReportRowObjects(), reportRowObjects.count > 1 {
-            var objects: [(rfs: Date, leadTime: Int)] = []
-            (1..<reportRowObjects.count).forEach({ i in
-                let object1 = reportRowObjects[i]
-                (0..<i).forEach({ k in
-                    let object2 = reportRowObjects[k]
-                    let psack1 = Int(object2.in_progress + object2.done)
-                    if (psack1 == Int(object1.done)) {
-                        objects.append((rfs: object2.date! as Date, leadTime: getDayDiff(startDate: object1.date! as Date, endDate: object2.date! as Date)))
-                    }
-                })
-            })
-            return objects
-        }
-        return nil
-    }
-    
+
     private class func getDayDiff(startDate: Date, endDate: Date) -> Int {
         return Calendar.current.dateComponents([.day], from: endDate, to: startDate).day!
     }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F292566205FB38800899651 /* ZNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F292565205FB38800899651 /* ZNumberField.swift */; };
-		4F4FB2D62074EC2B00AFF1BC /* ZLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FB2D52074EC2B00AFF1BC /* ZLookupTableViewCell.swift */; };
 		4F5399F02065227800A3C7A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5399EF2065227800A3C7A7 /* Colors.swift */; };
 		4F5399F62065D06400A3C7A7 /* ZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5399F52065D06400A3C7A7 /* ZStackView.swift */; };
 		4F6D4EF720B8637700ED0159 /* BoardCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D4EF620B8637700ED0159 /* BoardCalculations.swift */; };
@@ -20,7 +19,6 @@
 		4F87F20A205C010C003E70E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F87F208205C010C003E70E0 /* LaunchScreen.storyboard */; };
 		4F87F228205C11C8003E70E0 /* ZTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87F227205C11C8003E70E0 /* ZTableViewCell.swift */; };
 		4F87F22E205C3310003E70E0 /* ZDateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87F22D205C3310003E70E0 /* ZDateField.swift */; };
-		4FCBD0EE2065D8850047FAA0 /* ZLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBD0ED2065D8850047FAA0 /* ZLookupTableViewController.swift */; };
 		4FE1F49F206BF98B000A9F87 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1F49E206BF98B000A9F87 /* CoreDataHandler.swift */; };
 		4FEFCE7A20738D1E00FC2004 /* ReportRow+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFCE7820738D1E00FC2004 /* ReportRow+CoreDataClass.swift */; };
 		4FEFCE7B20738D1E00FC2004 /* ReportRow+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFCE7920738D1E00FC2004 /* ReportRow+CoreDataProperties.swift */; };
@@ -28,7 +26,6 @@
 
 /* Begin PBXFileReference section */
 		4F292565205FB38800899651 /* ZNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZNumberField.swift; sourceTree = "<group>"; };
-		4F4FB2D52074EC2B00AFF1BC /* ZLookupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZLookupTableViewCell.swift; sourceTree = "<group>"; };
 		4F5399EF2065227800A3C7A7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4F5399F52065D06400A3C7A7 /* ZStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackView.swift; sourceTree = "<group>"; };
 		4F6D4EF620B8637700ED0159 /* BoardCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCalculations.swift; sourceTree = "<group>"; };
@@ -44,7 +41,6 @@
 		4F87F216205C010D003E70E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F87F227205C11C8003E70E0 /* ZTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTableViewCell.swift; sourceTree = "<group>"; };
 		4F87F22D205C3310003E70E0 /* ZDateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDateField.swift; sourceTree = "<group>"; };
-		4FCBD0ED2065D8850047FAA0 /* ZLookupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZLookupTableViewController.swift; sourceTree = "<group>"; };
 		4FE1F49E206BF98B000A9F87 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		4FEFCE7820738D1E00FC2004 /* ReportRow+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportRow+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4FEFCE7920738D1E00FC2004 /* ReportRow+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportRow+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -121,7 +117,6 @@
 				4F87F22D205C3310003E70E0 /* ZDateField.swift */,
 				4F292565205FB38800899651 /* ZNumberField.swift */,
 				4F5399F52065D06400A3C7A7 /* ZStackView.swift */,
-				4F4FB2D52074EC2B00AFF1BC /* ZLookupTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				4F87F1FE205C010C003E70E0 /* ZTableViewController.swift */,
-				4FCBD0ED2065D8850047FAA0 /* ZLookupTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,10 +215,8 @@
 				4FE1F49F206BF98B000A9F87 /* CoreDataHandler.swift in Sources */,
 				4F87F1FF205C010C003E70E0 /* ZTableViewController.swift in Sources */,
 				4F87F228205C11C8003E70E0 /* ZTableViewCell.swift in Sources */,
-				4FCBD0EE2065D8850047FAA0 /* ZLookupTableViewController.swift in Sources */,
 				4F6D4EF720B8637700ED0159 /* BoardCalculations.swift in Sources */,
 				4F5399F02065227800A3C7A7 /* Colors.swift in Sources */,
-				4F4FB2D62074EC2B00AFF1BC /* ZLookupTableViewCell.swift in Sources */,
 				4F5399F62065D06400A3C7A7 /* ZStackView.swift in Sources */,
 				4FEFCE7B20738D1E00FC2004 /* ReportRow+CoreDataProperties.swift in Sources */,
 				4F87F205205C010C003E70E0 /* Zeroban.xcdatamodeld in Sources */,

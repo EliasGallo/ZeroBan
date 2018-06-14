@@ -79,38 +79,5 @@
             </objects>
             <point key="canvasLocation" x="-487" y="25"/>
         </scene>
-        <!--Lookup Table View Controller-->
-        <scene sceneID="Rrq-hg-F5V">
-            <objects>
-                <tableViewController id="TgQ-lP-iL7" customClass="ZLookupTableViewController" customModule="Zeroban" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cgm-lP-Q5W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="uHs-5M-ekt" customClass="ZStackView" customModule="Zeroban" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </stackView>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="zlookupcell" id="XrF-zu-BlH" customClass="ZTableViewCell" customModule="Zeroban" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XrF-zu-BlH" id="If8-Nb-emv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="TgQ-lP-iL7" id="pH9-dZ-OBc"/>
-                            <outlet property="delegate" destination="TgQ-lP-iL7" id="38G-p2-RPZ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="3fa-O0-9J1"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b8h-c0-Vbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1047" y="25"/>
-        </scene>
     </scenes>
 </document>
