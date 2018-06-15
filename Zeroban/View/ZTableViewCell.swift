@@ -59,7 +59,7 @@ class ZTableViewCell: UITableViewCell {
             entity?.extraSections.forEach({ value in
                 // set last one as total
                 let totalField = ZNumberField()
-                totalField.text = String(value)
+                totalField.text = String(describing: value)
                 totalField.setDisabledField()
                 stackView.addArrangedSubview(totalField)
             })

@@ -68,6 +68,9 @@ class ZTableViewController: UITableViewController {
     @objc func handleBarClick() {
         // set edit mode
         editMode = !editMode
+        if(editMode) {
+            data = CoreDataHandler.fetchData()
+        }
         tableView.reloadData()
         navigationItem.rightBarButtonItem?.title = editMode ? "Done" : "Edit"
         print("editMode", editMode)

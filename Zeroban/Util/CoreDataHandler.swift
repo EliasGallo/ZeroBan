@@ -59,7 +59,7 @@ class CoreDataHandler: NSObject {
     
     class func fetchData() -> (sections: [String], values: [ReportRow])? {
         if let objects: [ReportRow] = fetchAllReportRowObjects(), !objects.isEmpty {
-            let keys: [String] = objects[0].getEntityValues().map({ String.init(describing: $0.key) }) + ["Total", "WIP", "PSAck", "Thoughput"]
+            let keys: [String] = objects[0].getEntityValues().map({ String.init(describing: $0.key) }) + ["Total", "WIP", "PSAck", "Thoughput", "rfs"]
             
             // add extra values
             for i in 0 ..< objects.count {
@@ -70,7 +70,8 @@ class CoreDataHandler: NSObject {
                     BoardCalculations.getPSAck(entity: o),
                     i != 0
                         ? BoardCalculations.getThroughput(entity: o, entity2: objects[i - 1])
-                        : 0
+                        : 0,
+                    BoardCalculations.getRfsLookup(entity: o, olderEntities: Array(objects[0..<i])) ?? "-",
                 ]
             }
             return (sections: keys, values: objects)

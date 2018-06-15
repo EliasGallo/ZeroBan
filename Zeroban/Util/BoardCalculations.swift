@@ -25,5 +25,17 @@ struct BoardCalculations {
     static func getThroughput(entity: ReportRow, entity2: ReportRow) -> Int {
         return Int(entity.done - entity2.done)
     }
+    
+    static func getRfsLookup(entity: ReportRow, olderEntities: [ReportRow]) -> Date? {
+        // PSAck1 = inprogress1 + done1
+        // rfs lookup = date PSAack1 = done2
+        for object in olderEntities {
+            let psack1 = object.in_progress + object.done
+            if psack1 == entity.done {
+                return object.date! as Date
+            }
+        }
+        return nil
+    }
 }
 

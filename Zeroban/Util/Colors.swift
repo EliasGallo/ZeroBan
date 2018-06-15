@@ -10,7 +10,7 @@ import UIKit
 
 struct ZColors {
     static let ActionColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
-    static let DisabledColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+    static let DisabledColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     static let FieldBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let BackgroundColor = #colorLiteral(red: 0, green: 0.5134028792, blue: 0.7684984803, alpha: 1)
 }
