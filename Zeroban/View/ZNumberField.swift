@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZNumberField: UITextField {
+class ZNumberField: UITextField, UITextFieldDelegate {
 
     var changeValue: ((Int) -> ())?
     
@@ -19,6 +19,7 @@ class ZNumberField: UITextField {
     required override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.delegate = self
         self.textAlignment = .center
         self.backgroundColor = ZColors.ActionColor
         self.layer.cornerRadius = 4.0
@@ -49,5 +50,10 @@ class ZNumberField: UITextField {
     
     @objc func donePressed() {
         self.endEditing(false)
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.selectAll(self)
+//        self.selectedTextRange = self.textRange(from: self.beginningOfDocument, to: self.endOfDocument)
     }
 }
