@@ -37,27 +37,29 @@ class ZTableViewCell: UITableViewCell {
                 if let dateValue = $0.value.get as? Date {
                     let dateField:ZDateField = ZDateField()
                     dateField.setValue(value: dateValue)
-                    if !self.fieldsDisabled {
-                        dateField.setDisabledField()
-                    } else {
+                    if self.fieldsDisabled {
                         dateField.changeValue = fieldChanged(set: $0.value.set)
+                    } else {
+                        dateField.setDisabledField()
                     }
+                    
+                    dateField.invalid(isInvalid: $0.invalid)
                     self.stackView.addArrangedSubview(dateField)
                     
                 } else if let intValue = $0.value.get as? Int {
                     let numberField = ZNumberField()
                     numberField.text = String(intValue)
-                    if !self.fieldsDisabled {
-                        numberField.setDisabledField()
-                    } else {
+                    if self.fieldsDisabled {
                         numberField.changeValue = fieldChanged(set: $0.value.set)
+                    } else {
+                        numberField.setDisabledField()
                     }
+                    numberField.invalid(isInvalid: $0.invalid)
                     stackView.addArrangedSubview(numberField)
                 }
             })
             
             entity?.extraSections.forEach({ value in
-                // set last one as total
                 let totalField = ZNumberField()
                 totalField.text = String(describing: value)
                 totalField.setDisabledField()
@@ -69,14 +71,12 @@ class ZTableViewCell: UITableViewCell {
     func fieldChanged(set:@escaping (Date) -> ()) -> ((Date) -> ()) {
         return { newValue in
             set(newValue)
-            _ = CoreDataHandler.saveContext()
         }
     }
     
     func fieldChanged(set:@escaping (Int) -> ()) -> ((Int) -> ()) {
         return { newValue in
             set(newValue)
-            _ = CoreDataHandler.saveContext()
             // assuming total is the last subview
             (self.stackView.arrangedSubviews.last as! ZNumberField).text = String(describing: self.entity?.extraSections.last)
         }

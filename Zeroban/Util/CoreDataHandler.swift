@@ -68,10 +68,10 @@ class CoreDataHandler: NSObject {
                     BoardCalculations.getTotal(entity: o),
                     BoardCalculations.getWip(entity: o),
                     BoardCalculations.getPSAck(entity: o),
-                    i != 0
+                    i > 0
                         ? BoardCalculations.getThroughput(entity: o, entity2: objects[i - 1])
                         : 0,
-                    BoardCalculations.getRfsLookup(entity: o, olderEntities: Array(objects[0..<i])) ?? "-",
+                    BoardCalculations.getRfsLookup(entity: o, olderEntities: Array(objects[0..<i])) ?? "-"
                 ]
             }
             return (sections: keys, values: objects)

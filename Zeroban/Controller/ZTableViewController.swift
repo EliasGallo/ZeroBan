@@ -37,7 +37,7 @@ class ZTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        data = CoreDataHandler.fetchData()
+        fetchData()
     }
     
     @objc func dismissKeyboard() {
@@ -68,19 +68,19 @@ class ZTableViewController: UITableViewController {
     @objc func handleBarClick() {
         // set edit mode
         editMode = !editMode
-        if(editMode) {
-            data = CoreDataHandler.fetchData()
+        if(!editMode) {
+            _ = CoreDataHandler.saveContext()
+            fetchData()
         }
         tableView.reloadData()
         navigationItem.rightBarButtonItem?.title = editMode ? "Done" : "Edit"
-        print("editMode", editMode)
     }
     
     @IBAction func handlePlusClick() {
         let lastDate = self.data?.values.last?.date
         let newDate = lastDate != nil ? Calendar.current.date(byAdding: .day, value: 1, to: lastDate! as Date) : Date.init()
         if CoreDataHandler.saveReportRowObject(date: newDate!, todo: 0, inProgress: 0, done: 0) {
-            data = CoreDataHandler.fetchData()
+            fetchData()
             tableView.reloadData()
         } else {
             print("couldn't save")
@@ -105,6 +105,13 @@ class ZTableViewController: UITableViewController {
         label.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         label.textColor = .white
         return label
+    }
+    
+    private func fetchData() {
+        data = CoreDataHandler.fetchData()
+        if data != nil {
+            BoardCalculations.validateData(entities: data!.values)
+        }
     }
     
     // Set the spacing between sections

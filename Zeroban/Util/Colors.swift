@@ -13,6 +13,7 @@ struct ZColors {
     static let DisabledColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     static let FieldBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let BackgroundColor = #colorLiteral(red: 0, green: 0.5134028792, blue: 0.7684984803, alpha: 1)
+    static let InvalidColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
 }
 
 struct ZUtil {

@@ -12,13 +12,14 @@ import CoreData
 
 public class ReportRow: NSManagedObject {
     var extraSections: Array<Any> = []
+    var invalidSections: Array<String> = []
 
-    func getEntityValues() -> [(key: String, value: (get: Any, set:(Any) -> ()))] {
+    func getEntityValues() -> [(key: String, value: (get: Any, set:(Any) -> ()), invalid: Bool)] {
         return [
-            ("Date", getSetDate()),
-            ("Todo", getSetTodo()),
-            ("In Progress", getSetInProgress()),
-            ("Done", getSetDone())
+            ("Date", getSetDate(), hasInvalidDate()),
+            ("Todo", getSetTodo(), false),
+            ("In Progress", getSetInProgress(), false),
+            ("Done", getSetDone(), hasInvalidDone())
         ]
     }
     
@@ -56,5 +57,29 @@ public class ReportRow: NSManagedObject {
                 self.done = Int32(value as! Int)
             }
         )
+    }
+    
+    func setInvalidDate(isInvalid: Bool) {
+        hasInvalid(section: "date", isInvalid: isInvalid)
+    }
+    
+    func hasInvalidDate() -> Bool {
+        return invalidSections.contains("date")
+    }
+    
+    func setInvalidDone(isInvalid: Bool) {
+        hasInvalid(section: "done", isInvalid: isInvalid)
+    }
+    
+    func hasInvalidDone() -> Bool {
+        return invalidSections.contains("done")
+    }
+    
+    private func hasInvalid(section: String, isInvalid: Bool) {
+        if(isInvalid) {
+            invalidSections.append(section)
+        } else {
+            invalidSections = invalidSections.filter({ $0 != section })
+        }
     }
 }

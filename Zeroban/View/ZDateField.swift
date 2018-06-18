@@ -57,4 +57,11 @@ class ZDateField: UITextField {
         self.endEditing(true)
     }
 
+    func invalid(isInvalid: Bool) {
+        if (isInvalid) {
+            self.layer.borderColor = ZColors.InvalidColor.cgColor
+        } else {
+            self.layer.borderColor = ZColors.FieldBorderColor.cgColor
+        }
+    }
 }

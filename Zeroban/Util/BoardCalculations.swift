@@ -37,5 +37,14 @@ struct BoardCalculations {
         }
         return nil
     }
+    
+    static func validateData(entities: [ReportRow]) {
+        for i in 1..<entities.count {
+            let o = entities[i]
+            let prevO = entities[i - 1]
+            o.setInvalidDate(isInvalid: Calendar.current.compare(prevO.date! as Date, to: o.date! as Date, toGranularity: .day) != .orderedAscending)
+            o.setInvalidDone(isInvalid: prevO.done > o.done)
+        }
+    }
 }
 

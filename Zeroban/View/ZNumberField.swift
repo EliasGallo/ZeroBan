@@ -56,4 +56,12 @@ class ZNumberField: UITextField, UITextFieldDelegate {
         self.selectAll(self)
 //        self.selectedTextRange = self.textRange(from: self.beginningOfDocument, to: self.endOfDocument)
     }
+    
+    func invalid(isInvalid: Bool) {
+        if (isInvalid) {
+            self.layer.borderColor = ZColors.InvalidColor.cgColor
+        } else {
+            self.layer.borderColor = ZColors.FieldBorderColor.cgColor
+        }
+    }
 }
