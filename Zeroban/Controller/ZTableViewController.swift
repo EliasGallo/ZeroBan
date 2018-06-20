@@ -78,8 +78,9 @@ class ZTableViewController: UITableViewController {
     
     @IBAction func handlePlusClick() {
         let lastDate = self.data?.values.last?.date
+        let lastDone = self.data?.values.last?.done
         let newDate = lastDate != nil ? Calendar.current.date(byAdding: .day, value: 1, to: lastDate! as Date) : Date.init()
-        if CoreDataHandler.saveReportRowObject(date: newDate!, todo: 0, inProgress: 0, done: 0) {
+        if CoreDataHandler.saveReportRowObject(date: newDate!, todo: 0, inProgress: 0, done: lastDone) {
             fetchData()
             tableView.reloadData()
         } else {
